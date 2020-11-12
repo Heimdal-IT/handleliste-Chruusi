@@ -1,39 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Handleliste</title>
 </head>
 <body>
-   <div id="liste"></div>
+    <input type="text" placeholder="Varer" id="vare">
+    <input type="button" value="OK!" id="liste">
+    <input type="button" value="Fjern" id="fjernListe" onclick="fjern()"><br>
+   
+      
+    <ul id="handleliste">
+        
+        
+        
+    </ul>
+    
+    
+    
+    
+    <script>
+    //let handleliste = ["Epler","Appelsin","Red Bull","Potetgull"];
+    
+    //console.log(handleliste);
+    //document.body.innerHTML = handleliste;
+     const vareText = document.getElementById("vare");
+     let liste = document.getElementById("liste");
+     let fjernListe = document.getElementById("fjernListe");
+     let handleli = document.getElementById("handleliste");
+     let check = document.getElementById("check")
+        
+   let handleliste = [];
+    
+     let skrivLisete = function(){
+         handleli.innerHTML = "";
+         for(i = 0; i < handleliste.length; i++){
+             handleli.innerHTML += `<li><input type="checkbox">${handleliste[i]}</li>`
+         };
+     };
+    
+    
+    
+    let leggTil = function(){
+        if(true) {
+            handleliste.push(document.getElementById("vare").value);
+            console.log(handleliste);
+        };
+     skrivLisete();
+        document.getElementById("vare").value = "";
+        
+    };
+    
+    let fjern = function() {
+        handleliste.pop();
+        
+        skrivLisete();
+    };
+    
+    
+    document.getElementById("liste").addEventListener("click", leggTil);
+        
+    
+   
+</script>
     
 </body>
 
-<script>
-    let handleliste = ["Epler", "Appelsiner", "Sjokolade", "Sjokomelk"];
-    handleliste[4] = "Skinke";
-    handleliste.push("Smør");
-    handleliste[3] = "Litago jordbær";
-    
-    handleliste.pop();
-    
-    console.log(handleliste.indexOf("Vaskemiddel"));
-    
-    
-
-    /*
-
-    */
-    
-    let listeDiv = document.getElementById("liste");
-    
-        for(let i = 0; i<handleliste.length; i++){
-            
-            listeDiv.innerHTML += handleliste[i] + "<br>";
-    }
- 
-    
-    
-</script>
 
 </html>
